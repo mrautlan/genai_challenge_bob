@@ -29,6 +29,7 @@
     page-break-after: always; break-after: page; overflow: hidden;
     display: flex; flex-direction: column;
   }
+  .page > * { flex-shrink: 0; }
   .page:last-child { page-break-after: auto; break-after: auto; }
   .page-head {
     display: flex; justify-content: space-between; align-items: baseline;
@@ -61,7 +62,7 @@
 
   /* ---------- Cover ---------- */
   .hero {
-    background: var(--ink); color: #fff; margin: -13mm -14mm 6mm; padding: 13mm 14mm 9mm;
+    background: var(--ink); color: #fff; margin: -13mm -14mm 5mm; padding: 11mm 14mm 7mm;
     position: relative; overflow: hidden;
   }
   .hero::after {
@@ -70,7 +71,7 @@
     opacity: 0.95;
   }
   .hero .eyebrow { font-size: 8.5pt; letter-spacing: 0.14em; text-transform: uppercase; color: #a6c8ff; }
-  .hero h1 { font-size: 27pt; line-height: 1.08; font-weight: 600; margin: 2.5mm 0 3mm; max-width: 125mm; letter-spacing: -0.015em; position: relative; z-index: 1; }
+  .hero h1 { font-size: 24pt; line-height: 1.08; font-weight: 600; margin: 2.5mm 0 3mm; max-width: 125mm; letter-spacing: -0.015em; position: relative; z-index: 1; }
   .hero p { color: #c6c6c6; max-width: 120mm; font-size: 10pt; position: relative; z-index: 1; }
   .hero .repo { margin-top: 4mm; display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); padding: 1.6mm 3mm; border-radius: 1.5mm; font-family: "IBM Plex Mono", monospace; font-size: 8.8pt; color: #fff; position: relative; z-index: 1; }
 
@@ -126,7 +127,7 @@
 
   .example {
     margin-top: 3mm; border: 1px solid var(--line); border-radius: 2.5mm; padding: 3.2mm 3.6mm;
-    font-family: "IBM Plex Mono", monospace; font-size: 8.5pt; line-height: 1.75;
+    font-family: "IBM Plex Mono", monospace; font-size: 8.4pt; line-height: 1.65;
   }
   .example .hl { padding: 0.4mm 1mm; border-radius: 1mm; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .hl.g { background: var(--blue-20); } .hl.c { background: #9ef0f0; } .hl.k { background: #e8daff; } .hl.d { background: #a7f0ba; } .hl.q { background: var(--yellow-10); }
@@ -162,6 +163,12 @@
   .trouble td { font-size: 8.3pt; padding: 1.3mm 2mm; }
   .trouble td:first-child { font-weight: 600; width: 36%; }
 
+  .concepts td { font-size: 8.3pt; padding: 1.05mm 2mm; }
+  .concepts td:first-child { font-weight: 600; width: 37%; white-space: nowrap; }
+  .concepts .src { color: var(--muted); font-size: 7.2pt; font-weight: 400; margin-left: 1.2mm; }
+  .changes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .changes div { border-left: 3px solid var(--ink); background: var(--bg-soft); border-radius: 0 2mm 2mm 0; padding: 2.4mm 3mm; font-size: 8.4pt; line-height: 1.38; }
+  .changes b { display: block; font-size: 9.6pt; margin-bottom: 0.6mm; }
   .boosters { display: flex; flex-wrap: wrap; gap: 1.8mm; }
   .boosters span { font-family: "IBM Plex Mono", monospace; font-size: 7.9pt; background: var(--yellow-10); border: 1px solid #f8e6a0; border-radius: 10mm; padding: 1mm 2.8mm; }
   .cfg td { font-size: 8.3pt; padding: 0.9mm 2mm; }
@@ -180,17 +187,17 @@
 <!-- ================= PAGE 1 ================= -->
 <section class="page">
   <div class="hero">
-    <div class="eyebrow">IBM Bob · Hands-on Challenge · 45 min</div>
+    <div class="eyebrow">IBM Bob · Hands-on Challenge · 45 min · solo</div>
     <h1>Build software with an AI agent, and stay the pilot.</h1>
-    <p>This handout is your companion for the hands-on session: how to set up, how Bob works, how to prompt well, and copy-paste prompts for every step.</p>
+    <p>You know the concepts: agent loops, RAG, prompting, AgentOps. This handout shows where they live in Bob, with prompts and tips for every step.</p>
     <div class="repo">github.com/mrautlan/genai_challenge_bob</div>
   </div>
 
   <div class="block">
     <h3><span class="num">1</span>Get started in 5 steps</h3>
     <div class="steps">
-      <div class="step"><b>1</b><span class="t">Start the trial</span><a href="https://bob.ibm.com/trial">bob.ibm.com/trial</a>. Needs a free IBMid. 50&nbsp;Bobcoins for 30&nbsp;days.</div>
-      <div class="step"><b>2</b><span class="t">Install Bob IDE</span><a href="https://bob.ibm.com/download">bob.ibm.com/download</a>. Mac: <em>mac-ARM</em> (M-chips) or <em>mac-Intel</em>. Windows: <code>.exe</code>.</div>
+      <div class="step"><b>1</b><span class="t">Start the trial</span><a href="https://bob.ibm.com/trial">bob.ibm.com/trial</a> with a free IBMid: 50&nbsp;Bobcoins, 30&nbsp;days.</div>
+      <div class="step"><b>2</b><span class="t">Install Bob IDE</span><a href="https://bob.ibm.com/download">bob.ibm.com/download</a>. Mac: ARM or Intel · Windows: <code>.exe</code></div>
       <div class="step"><b>3</b><span class="t">Sign in</span>Launch Bob. A browser window opens for your IBMid login.</div>
       <div class="step"><b>4</b><span class="t">Get the repo</span>On GitHub: <strong>Code → Download ZIP</strong> and unzip, or <code>git clone</code>.</div>
       <div class="step"><b>5</b><span class="t">Open your track</span><strong>File → Open Folder</strong> → open <em>only</em> your track folder.</div>
@@ -198,20 +205,19 @@
   </div>
 
   <div class="block">
-    <h3><span class="num">2</span>What makes an agent “agentic”?</h3>
-    <p class="small" style="margin-bottom:2mm">A chatbot <em>answers</em>. An agent <strong>acts</strong>: it reads your files, decides on the next step, uses tools (edit files, run commands) and checks the result. And it repeats this until the goal is reached.</p>
-    <div class="loop">
-      <div class="node you"><span class="who">You</span>Describe a <strong>goal</strong> with context &amp; constraints</div>
-      <div class="arrow">→</div>
-      <div class="node bob"><span class="who">Bob</span><strong>Reads</strong> files &amp; context, makes a plan</div>
-      <div class="arrow">→</div>
-      <div class="node bob"><span class="who">Bob</span><strong>Proposes</strong> an action: edit a file, run a command</div>
-      <div class="arrow">→</div>
-      <div class="node you"><span class="who">You</span><strong>Review</strong> &amp; approve (or reject / correct)</div>
-      <div class="arrow">→</div>
-      <div class="node bob"><span class="who">Bob</span><strong>Executes</strong> &amp; checks the result</div>
-    </div>
-    <div class="loop-back"><span>↺ repeat until the goal is reached. You can stop, correct or roll back at any time.</span></div>
+    <h3><span class="num">2</span>From concepts to Bob</h3>
+    <p class="small" style="margin-bottom:1.6mm">You know these ideas from the previous sessions. Here’s where they live in Bob.</p>
+    <table class="concepts">
+      <tr><th>Concept · session</th><th>In Bob</th></tr>
+      <tr><td>Agent loop<span class="src">Agentic Systems</span></td><td>Read context → call a tool (edit, run) → observe the result → repeat</td></tr>
+      <tr><td>Tools &amp; permissions<span class="src">Agentic Systems</span></td><td>Tool groups per mode: read, edit, execute, browser, MCP, …</td></tr>
+      <tr><td>Planning &amp; decomposition<span class="src">Agentic Systems</span></td><td>Plan mode writes the spec · to-do lists · hand-off Plan → Agent</td></tr>
+      <tr><td>Multi-agent<span class="src">Agentic Systems</span></td><td>Subagents (e.g. <em>Explore</em>) take on side tasks</td></tr>
+      <tr><td>Retrieval / RAG<span class="src">RAG &amp; Prompt Eng.</span></td><td><code>@</code> mentions pull files, errors, terminal output, web pages into context</td></tr>
+      <tr><td>Persistent instructions<span class="src">RAG &amp; Prompt Eng.</span></td><td>Rules, <code>AGENTS.md</code> and custom modes, versioned in Git</td></tr>
+      <tr><td>Human-in-the-loop &amp; guardrails<span class="src">AgentOps</span></td><td>Approvals · auto-approve policies · Rollback · <code>.bobignore</code></td></tr>
+      <tr><td>Problem framing<span class="src">Design Thinking</span></td><td>“How might we…” → spec in Plan mode (Track A)</td></tr>
+    </table>
   </div>
 
   <div class="block">
@@ -220,11 +226,11 @@
       <div class="mode ask"><div class="name">Ask <span class="perm">read-only</span></div>
         <p>Understand code, ask questions, get explanations and reviews. Can’t change files, so it’s safe for exploring.</p></div>
       <div class="mode plan"><div class="name">Plan <span class="perm">.md / .txt only</span></div>
-        <p>Think before building: clarify requirements, design, and break work into steps. It writes plans like <code>PLAN.md</code>.</p></div>
+        <p>Clarify requirements, design, break work into steps. Writes specs like <code>PLAN.md</code>.</p></div>
       <div class="mode agent"><div class="name">Agent <span class="perm">full tools</span></div>
         <p>Build: create and edit files, run commands, fix bugs. Asks for your approval before acting.</p></div>
     </div>
-    <p class="small" style="margin-top:2.4mm"><strong>Switch modes:</strong> dropdown left of the chat input · <span class="kbd">⌘ + .</span> (Mac) / <span class="kbd">Ctrl + .</span> (Windows/Linux) · Bob may also suggest switching, e.g. from Plan to Agent when the plan is ready.</p>
+    <p class="small" style="margin-top:2.2mm"><strong>Switch modes:</strong> dropdown left of the chat input · <span class="kbd">⌘ + .</span> (Mac) / <span class="kbd">Ctrl + .</span> (Windows/Linux) · or accept Bob’s suggestion</p>
   </div>
 
   <div class="grid-2 block">
@@ -236,15 +242,15 @@
         <div class="f" style="background:var(--blue-10)"><b>Build</b>Agent</div><span class="arrow">→</span>
         <div class="f" style="background:var(--green-10)"><b>Verify</b>You!</div>
       </div>
-      <p class="small" style="margin-top:2.4mm">Small loops beat big bangs: build one feature, test it, then the next. A wrong plan is cheap to fix. Wrong code is expensive.</p>
+      <p class="small" style="margin-top:2.4mm">Small loops: one feature, test it, then the next. Fixing a plan is cheaper than fixing code.</p>
     </div>
     <div>
       <h3><span class="num">5</span>Today’s 45 minutes</h3>
       <table class="schedule small">
-        <tr><td>0–5 min</td><td>Setup check, open your track folder, first prompt</td></tr>
-        <tr><td>5–35 min</td><td>Track A <em>Build an App</em> or Track B <em>Legacy Rescue</em>, level by level</td></tr>
-        <tr><td>35–40 min</td><td>Bonus: <em>Make Bob Yours</em>, or polish</td></tr>
-        <tr><td>40–45 min</td><td>Show &amp; tell: 60 seconds per team</td></tr>
+        <tr><td>0–5 min</td><td>Setup check &amp; first prompt</td></tr>
+        <tr><td>5–35 min</td><td>Track A or B, level by level</td></tr>
+        <tr><td>35–40 min</td><td>Bonus level, or polish</td></tr>
+        <tr><td>40–45 min</td><td>Show &amp; tell: volunteers, 60 s</td></tr>
       </table>
     </div>
   </div>
@@ -304,7 +310,7 @@
         <li>Start a <strong>new chat for a new topic</strong></li>
         <li>Use <strong>small, focused prompts</strong>, not “build everything”</li>
         <li>Point to files with <code>@</code> instead of “look at the whole project”</li>
-        <li>Work in pairs, so one account can serve as a backup</li>
+        <li>If Bob fails twice, <strong>stop and rethink</strong> instead of retrying</li>
       </ul>
     </div>
     <div class="card soft">
@@ -316,7 +322,7 @@
   </div>
 
   <div class="block">
-    <h3>⭐ Make Bob yours: rules &amp; custom modes</h3>
+    <h3>⭐ Guardrails: context, rules &amp; custom modes</h3>
     <table class="cfg">
       <tr><td><code>.bob/rules/*.md</code></td><td>Team rules that Bob follows in <strong>every</strong> mode. Files are read in alphabetical order, e.g. <code>01-team-rules.md</code>.</td></tr>
       <tr><td><code>.bob/rules-ask/</code> …</td><td>Rules for <strong>one</strong> mode only: <code>rules-{mode-slug}</code>, e.g. <code>rules-plan</code>, <code>rules-agent</code></td></tr>
@@ -335,7 +341,16 @@
 
 <!-- ================= PAGE 3 ================= -->
 <section class="page">
-  <div class="page-head"><h2>How to prompt an agent</h2><span class="kicker">Anatomy · Examples · Rules</span></div>
+  <div class="page-head"><h2>Prompting a coding agent</h2><span class="kicker">Context engineering · Examples · Rules</span></div>
+
+  <div class="block">
+    <h3>🔀 What changes compared to prompting a chatbot</h3>
+    <div class="changes">
+      <div><b>It acts.</b>Prompts have side effects on your files. Set boundaries: what may change, and what must not.</div>
+      <div><b>It gathers its own context.</b>Point it at the right files with <code>@</code>. Store lasting knowledge in rules and <code>AGENTS.md</code> instead of repeating it.</div>
+      <div><b>It works in many steps.</b>Say how “done” is verified (tests, acceptance criteria), or the agent will decide that for itself.</div>
+    </div>
+  </div>
 
   <div class="block">
     <h3>🧬 Anatomy of a good prompt</h3>
@@ -361,20 +376,16 @@
       <tr><td class="bad">Make a quiz app.</td><td class="good">Build a 10-question quiz about Linux in one <code>index.html</code> (no libraries) with a score and a 15-second timer. Tell me how to test it.</td><td class="why">Concrete scope, tech constraints, a way to verify</td></tr>
       <tr><td class="bad">It doesn’t work.</td><td class="good">Bug: after question 10, “Next” does nothing. Expected: a results screen. Console error: <code>TypeError: … (pasted)</code></td><td class="why">Steps, expected vs. actual, error message</td></tr>
       <tr><td class="bad">Write tests.</td><td class="good">Write <code>unittest</code> tests for rules R1–R7 in <code>@/README.md</code>, including values exactly on the thresholds. Test the spec, not the current code.</td><td class="why">Defines what “correct” means and covers edge cases</td></tr>
-      <tr><td class="bad">Improve the code.</td><td class="good">Rename the variables in <code>@/grades.py</code> to descriptive names. The behaviour must stay identical, so run the tests afterwards.</td><td class="why">One clear change plus a safety check</td></tr>
-      <tr><td class="bad">Fix everything.</td><td class="good">Look at the first failing test. Explain the root cause, then fix only that.</td><td class="why">Small steps stay reviewable and reversible</td></tr>
     </table>
   </div>
 
   <div class="block">
-    <h3>📏 Ten rules for working with agents</h3>
+    <h3>📏 Eight rules for working with coding agents</h3>
     <ol class="rules">
       <li><strong>One task per prompt.</strong> For big things, plan first and then build step by step.</li>
       <li><strong>Be explicit about constraints</strong>: language, files, libraries, what must not change.</li>
       <li><strong>Point, don’t describe</strong>: use <code>@/file</code>, <code>@problems</code>, <code>@terminal</code>.</li>
       <li><strong>Define “done”</strong>: tests pass, a feature works, the output looks like X.</li>
-      <li><strong>Let Bob ask first</strong>: “Ask me up to 3 questions before you start.”</li>
-      <li><strong>Want an answer only?</strong> Use Ask mode, or say “Do not change any files.”</li>
       <li><strong>Report bugs like a pro</strong>: steps → expected → actual → error message.</li>
       <li><strong>Ask for the why</strong>: “Explain the root cause before fixing.” You learn more and catch wrong guesses.</li>
       <li><strong>Verify everything.</strong> Run it, click it, check the numbers by hand. Agents can be confidently wrong.</li>
@@ -387,13 +398,11 @@
     <div class="boosters">
       <span>Ask me up to 3 questions first.</span>
       <span>Show me your plan and wait for my OK.</span>
-      <span>Explain the root cause before fixing.</span>
       <span>Only change X. Don’t touch anything else.</span>
       <span>Do not change any files.</span>
       <span>Run the tests afterwards.</span>
       <span>Tell me how to test it.</span>
       <span>Summarize what you changed in 3 bullets.</span>
-      <span>Explain it like I’m new to programming.</span>
     </div>
   </div>
 
@@ -453,12 +462,12 @@
       <tr><td>Bob says “done”, but it isn’t</td><td>Describe exactly what you see. Ask Bob to verify by running the code or the tests.</td></tr>
       <tr><td>Bob uses a function that doesn’t exist</td><td>“Are you sure? Show me where this is defined or documented.”</td></tr>
       <tr><td>Python not found (Track B)</td><td>Try <code>python3</code> on macOS/Linux, or <code>py</code> on Windows.</td></tr>
-      <tr><td>Running low on Bobcoins</td><td>Use smaller prompts and new chats, or continue on your teammate’s account.</td></tr>
+      <tr><td>Running low on Bobcoins</td><td>Use smaller prompts and start new chats. If you’re out of Bobcoins, tell the host in the chat.</td></tr>
     </table>
   </div>
 
   <div class="callout tip">
-    <strong>Show &amp; tell (60 s per team):</strong> show what you built · the prompt that worked surprisingly well · where Bob went wrong, and how you got it back on track.
+    <strong>Show &amp; tell (volunteers, screen share, 60 s):</strong> show what you built · the prompt that worked surprisingly well · where Bob went wrong, and how you got it back on track.
   </div>
 
   <div class="notes" style="margin-top:4mm">
